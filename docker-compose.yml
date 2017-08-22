@@ -1,0 +1,39 @@
+version: '2'
+services:
+  base:
+    build: ./base
+    image: oglimmer/linky-base
+  build:
+    build: ./build
+    image: oglimmer/linky-build
+    links:
+      - base
+  couchdb:
+    image: couchdb
+    volumes:
+      - ./couchdb/local.ini:/usr/local/etc/couchdb/local.ini:ro
+  lucene:
+    build: ./lucene
+  page-gen:
+    build: ./page-gen
+    links:
+      - build
+  rest:
+    build: ./rest
+    links:
+      - build
+  static:
+    build: ./static
+    links:
+      - build
+  haproxy:
+    image: haproxy
+    ports:
+      - "1936:1936"
+      - "80:80"
+    links:
+      - static
+      - rest
+      - page-gen
+    volumes:
+      - ./haproxy/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg:ro

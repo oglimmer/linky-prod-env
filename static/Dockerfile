@@ -10,7 +10,7 @@ COPY default /etc/nginx/sites-available
 RUN ln -sf /dev/stdout /var/log/nginx/access.log \
   && ln -sf /dev/stderr /var/log/nginx/error.log
 
-EXPOSE 8083
+EXPOSE 8082
 
 STOPSIGNAL SIGTERM
 

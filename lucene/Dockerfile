@@ -20,4 +20,6 @@ RUN gzip -d /home/couchdb-lucene-2.1.0/target/couchdb-lucene-2.1.0-dist.tar.gz &
 
 WORKDIR /home/couchdb-lucene-2.1.0/target/couchdb-lucene-2.1.0
 
-CMD /home/couchdb-lucene-2.1.0/target/couchdb-lucene-2.1.0/bin/run
+EXPOSE 5985
+
+CMD ["./bin/run"]

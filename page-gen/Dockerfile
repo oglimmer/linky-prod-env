@@ -1,7 +1,11 @@
 FROM oglimmer/linky-build
 
-COPY entrypoint.sh /home/build/linky
+ENV LINKY_PROPERTIES /etc/linky.properties
+ENV BIND 0.0.0.0
+ENV RUNCFG PROD-PAGE-GEN
+ENV REST_API_HOST rest
 
-WORKDIR /home/build/linky
+EXPOSE 8080
 
-ENTRYPOINT ./entrypoint.sh
+ENTRYPOINT ["/home/build/docker-entrypoint.sh"]
+CMD ["yarn", "start"]

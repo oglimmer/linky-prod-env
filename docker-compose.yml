@@ -36,9 +36,11 @@ services:
     ports:
       - "1936:1936"
       - "80:80"
+      - "443:443"
     links:
       - static
       - rest
       - page-gen
     volumes:
       - ./haproxy/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg:ro
+      - ./haproxy/chainandkey.pem:/usr/local/etc/haproxy/chainandkey.pem:ro

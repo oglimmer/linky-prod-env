@@ -2,6 +2,7 @@ FROM oglimmer/linky-base
 
 COPY linky.properties /etc/
 COPY sources /home/build/sources
+COPY docker-entrypoint.sh /home/build/
 
 WORKDIR /home/build
 

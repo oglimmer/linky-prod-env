@@ -1,3 +1,8 @@
+#
+# `links` is used to force the build order
+# `links` on haproxy is used to enable host resolution
+# `/usr/local/etc/couchdb/local.ini` must not be :ro
+#
 version: '2'
 services:
   base:
@@ -11,7 +16,7 @@ services:
   couchdb:
     image: couchdb
     volumes:
-      - ./couchdb/local.ini:/usr/local/etc/couchdb/local.ini:ro
+      - ./couchdb/local.ini:/usr/local/etc/couchdb/local.ini
   lucene:
     build: ./lucene
   page-gen:
